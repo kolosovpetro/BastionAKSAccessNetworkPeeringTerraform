@@ -1,4 +1,4 @@
-﻿$AksNodeRg = $( terraform output -raw aks_node_rg )
+$AksNodeRg = $( terraform output -raw aks_node_rg )
 $SubscriptionId = $( terraform output -raw subscription_id )
 $SpokeRg = $( terraform output -raw spoke_rg )
 $SpokeVnet = $( terraform output -raw spoke_vnet )
