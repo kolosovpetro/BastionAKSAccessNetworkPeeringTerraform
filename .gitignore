@@ -1,0 +1,11 @@
+.idea
+.ssh
+.terraform
+*.tfplan
+*.tfstate
+*.lock.info
+*.tfstate.backup
+azure.sas.conf
+*.txt
+id_rsa
+id_rsa.pub
