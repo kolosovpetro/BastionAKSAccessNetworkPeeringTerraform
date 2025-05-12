@@ -1,7 +1,7 @@
-resource "azurerm_network_security_group" "public" {
+resource "azurerm_network_security_group" "spoke" {
   name                = "nsg-${var.prefix}"
-  location            = azurerm_resource_group.public.location
-  resource_group_name = azurerm_resource_group.public.name
+  location            = azurerm_resource_group.spoke.location
+  resource_group_name = azurerm_resource_group.spoke.name
 }
 
 resource "azurerm_network_security_rule" "allow_ssh" {
@@ -14,8 +14,8 @@ resource "azurerm_network_security_rule" "allow_ssh" {
   destination_port_range      = "22"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = azurerm_resource_group.public.name
-  network_security_group_name = azurerm_network_security_group.public.name
+  resource_group_name         = azurerm_resource_group.spoke.name
+  network_security_group_name = azurerm_network_security_group.spoke.name
 }
 
 resource "azurerm_network_security_rule" "allow_http" {
@@ -28,8 +28,8 @@ resource "azurerm_network_security_rule" "allow_http" {
   destination_port_range      = "80"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = azurerm_resource_group.public.name
-  network_security_group_name = azurerm_network_security_group.public.name
+  resource_group_name         = azurerm_resource_group.spoke.name
+  network_security_group_name = azurerm_network_security_group.spoke.name
 }
 
 resource "azurerm_network_security_rule" "allow_https" {
@@ -42,6 +42,6 @@ resource "azurerm_network_security_rule" "allow_https" {
   destination_port_range      = "443"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = azurerm_resource_group.public.name
-  network_security_group_name = azurerm_network_security_group.public.name
+  resource_group_name         = azurerm_resource_group.spoke.name
+  network_security_group_name = azurerm_network_security_group.spoke.name
 }
